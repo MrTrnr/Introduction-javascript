@@ -4,3 +4,15 @@ for (let i = 0; i < array.length; i++) {
     console.log("Entier supérieur à 3 : " + array[i]);
   }
 }
+
+for (let i = 0; i < array.length; i++) {
+  if (array[i] % 2 == 0) {
+    console.log("Entier pair : " + array[i]);
+  }
+}
+
+for (let i = 0; i < array.length; i++) {
+  if (array[i] % 2 != 0) {
+    console.log("Entier impair : " + array[i]);
+  }
+}
