@@ -42,9 +42,8 @@ function controleTableau(tableau) {
   }
   if (tableau.length != 0) {
     for (let i = 0; i < tableau.length; i++) {
-      if (typeof tableau[i] != "number") {
+      if (typeof tableau[i] !== "number") {
         return false;
-        break;
       }
     }
     return true;
