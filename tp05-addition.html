@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP addition</title>
+  </head>
+  <body>
+    <input type="text" name="premierNombre" />
+    <input type="text" name="deuxiemeNombre" />
+    <input type="button" value="additionner" onclick="additionner()"/>
+    <section id="resultat">0<section>
+  </body>
+  <script>
+      
+function additionner(){
+    let premierNombre = document.querySelector("input[name='premierNombre']").value;
+    let deuxiemeNombre = document.querySelector("input[name='deuxiemeNombre']").value;
+    let resultat = parseInt(premierNombre) + parseInt(deuxiemeNombre);
+    let element = document.querySelector("#resultat");
+    element.innerHTML = resultat;
+}
+  </script>
+</html>
