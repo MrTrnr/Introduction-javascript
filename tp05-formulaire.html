@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP formulaire</title>
+  </head>
+  <body>
+    <div id="messageErreur"></div>
+    <form action="post">
+      <label for="nom">Nom</label>
+      <input type="text" name="nom" id="nom" />
+      <label for="prenom">Prénom</label>
+      <input type="text" name="prenom" id="prenom" />
+      <label for="dateNaissance">Date de naissance</label>
+      <input type="text" name="dateNaissance" id="dateNaissance" />
+      <input type="button" value="Envoyer" onclick="verificationSaisie()" />
+    </form>
+    <script>
+      function verificationSaisie() {
+        let emplacementMessageErreur = document.getElementById("messageErreur");
+
+        //effacement des anciens messages d'erreurs
+        emplacementMessageErreur.innerHTML = "";
+        let champsASaisir = document.querySelectorAll("input[type='text']");
+        for (let i = 0; i < champsASaisir.length; i++) {
+          if (champsASaisir[i].value == "") {
+            emplacementMessageErreur.innerHTML += `<p style='background-color:red'>champ vide : ${champsASaisir[i].name}</p>`;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
