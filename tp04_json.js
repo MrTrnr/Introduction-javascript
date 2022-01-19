@@ -21,12 +21,12 @@ let entreprise = {
   ],
 };
 for (let i = 0; i < entreprise.Fondateurs.length; i++) {
-  console.log(entreprise.Fondateurs[i].nom);
-  console.log(entreprise.Fondateurs[i].date);
-  console.log(entreprise.Fondateurs[i].lieu);
+  console.log("nom : " + entreprise.Fondateurs[i].nom);
+  console.log("date de naissance : " + entreprise.Fondateurs[i].date);
+  console.log("lieu de naissance : " + entreprise.Fondateurs[i].lieu);
 }
 
 for (let i = 0; i < entreprise.chiffredaffaires.length; i++) {
-  console.log(entreprise.chiffredaffaires[i].année);
-  console.log(entreprise.chiffredaffaires[i].ca);
+  console.log("année : " + entreprise.chiffredaffaires[i].année);
+  console.log("Chiffre d'affaires : " + entreprise.chiffredaffaires[i].ca);
 }
