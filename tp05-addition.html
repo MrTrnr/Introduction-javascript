@@ -15,7 +15,7 @@
             if (isNaN(premierNombre) || isNaN(deuxiemeNombre)){
                 throw "vous devez saisir un nombre";
             }
-            let resultat = parseInt(premierNombre) + parseInt(deuxiemeNombre);
+            let resultat = parseFloat(premierNombre) + parseFloat(deuxiemeNombre);
             element.innerHTML = resultat;
             
         }

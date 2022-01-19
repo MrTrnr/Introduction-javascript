@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP operation</title>
+    <script>
+
+      function selectionNombre(nomChamp){
+          let saisie = document.querySelector("input[name='"+nomChamp+"']").value;
+          try {
+            if(isNaN(saisie)) {
+              throw "vous devez saisir un nombre";
+            }else{
+              return (parseFloat(saisie));}
+          } catch (error) {
+            let element = document.querySelector("#resultat");
+            element.innerHTML = "<span style='background-color:red'>" + error + "</span>";
+          }
+      }
+
+      function additionner(){
+          let premierNombre = selectionNombre("premierNombre");
+          let deuxiemeNombre = selectionNombre("deuxiemeNombre");
+          return(premierNombre + deuxiemeNombre);
+      }
+
+      function soustraire(){
+          let premierNombre = selectionNombre("premierNombre");
+          let deuxiemeNombre = selectionNombre("deuxiemeNombre");
+          return(premierNombre - deuxiemeNombre);
+        }
+
+      function multiplier(){
+          let premierNombre = selectionNombre("premierNombre");
+          let deuxiemeNombre = selectionNombre("deuxiemeNombre");
+          return(premierNombre * deuxiemeNombre);
+      }
+
+      function diviser(){
+          let premierNombre = selectionNombre("premierNombre");
+          let deuxiemeNombre = selectionNombre("deuxiemeNombre");
+          try {
+            if (deuxiemeNombre!=0){
+              return(premierNombre / deuxiemeNombre);
+            }else{
+              throw "vous ne pouvez pas diviser par zéro";
+            }
+          } catch (error) {
+            let element = document.querySelector("#resultat");
+            element.innerHTML = "<span style='background-color:red'>" + error + "</span>";
+          }
+        }
+
+      function operation(){
+        //effacer les anciens messages d'erreur
+        let element = document.querySelector("#resultat");
+        element.innerHTML = "";
+        
+        switch(document.querySelector("select[name='operande']").value){
+          case "additionner":
+            if (!isNaN(additionner())){
+              element.innerHTML = additionner(); 
+            }
+          break;
+          case "soustraire": 
+            if (!isNaN(soustraire())){
+                element.innerHTML = soustraire(); 
+            }
+          break;
+          case "multiplier":
+            if (!isNaN(multiplier())){
+              element.innerHTML = multiplier(); 
+            }
+          break;
+          case "diviser":
+            if (!isNaN(diviser())){
+              element.innerHTML = diviser();
+            }
+          break;
+        }
+      }
+
+    </script>
+  </head>
+  <body>
+    <input type="text" name="premierNombre" />
+    <select name="operande" id="operande">
+      <option value="additionner">+</option>
+      <option value="soustraire">-</option>
+      <option value="multiplier">*</option>
+      <option value="diviser">/</option>
+       </select>
+      <input type="text" name="deuxiemeNombre" />
+      <input type="button" value="résultat" onclick="operation()"/>
+    <section id="resultat">0<section>
+  </body>
+</html>
