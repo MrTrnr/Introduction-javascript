@@ -15,7 +15,7 @@
             }else{
               return (parseFloat(saisie));}
           } catch (error) {
-            let element = document.querySelector("#resultat");
+            let element = document.querySelector("#affichageErreur");
             element.innerHTML = "<span style='background-color:red'>" + error + "</span>";
           }
       }
