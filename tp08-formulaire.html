@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP formulaire</title>
+    <script src="tp08-formulaire.js"></script>
+  </head>
+  <body onload="init()">
+    <div id="contenu"></div>
+    <form>
+      <label for="nom">Nom</label>
+      <input type="text" name="nom" id="nom" />
+      <label for="prenom">Prénom</label>
+      <input type="text" name="prenom" id="prenom" />
+      <label for="dateNaissance">Date de naissance</label>
+      <input type="date" name="dateNaissance" id="dateNaissance" />
+      <label for="lieuNaissance">Lieu de naissance</label>
+      <input type="text" name="lieuNaissance" id="lieuNaissance" />
+      <label for="departementNaissance">Département</label>
+      <input
+        type="text"
+        name="departementNaissance"
+        id="departementNaissance"
+      />
+      <label for="numeroRue">Numéro de rue</label>
+      <input type="text" name="numeroRue" id="numeroRue" />
+      <label for="libelleRue">Numéro de rue</label>
+      <input type="text" name="libelleRue" id="libelleRue" />
+      <label for="codePostal">Code postal</label>
+      <input type="text" name="codePostal" id="codePostal" />
+      <label for="ville">Ville</label>
+      <input type="text" name="ville" id="ville" />
+      <input type="button" value="Valider" onclick="envoyer()" />
+    </form>
+  </body>
+</html>
