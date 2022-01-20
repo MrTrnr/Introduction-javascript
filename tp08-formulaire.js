@@ -71,5 +71,5 @@ function envoyer() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(objet),
-  }).then((response) => response.text().then((text) => console.log(text)));
+  }).then((response) => response.text().then(() => init()));
 }
