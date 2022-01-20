@@ -3,11 +3,11 @@ function construireContenu(texte) {
 
   let contenu = document.querySelector("#contenu");
   let donnees = JSON.parse(texte);
-  let contenuAAficher = "";
+  let contenuAAficher = "<ol>";
   for (let i = 0; i < donnees.length; i++) {
-    contenuAAficher += `Pays : ${donnees[i].name.common} Capitale : ${donnees[i].capital} Population : ${donnees[i].population} Continent : ${donnees[i].continents}<br>`;
+    contenuAAficher += `<li>Pays : ${donnees[i].name.common} Capitale : ${donnees[i].capital} Population : ${donnees[i].population} Continent : ${donnees[i].continents}</li>`;
   }
-
+  contenuAAficher += "</ol>";
   contenu.innerHTML = contenuAAficher;
 }
 
