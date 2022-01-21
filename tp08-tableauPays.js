@@ -32,9 +32,8 @@ function afficherDonnees() {
 }
 
 function selectionNombre(nomChamp) {
-  console.log("appel fonction selectionNombre");
   let saisie = document.querySelector("input[name='" + nomChamp + "']").value;
-  console.log("saisie : " + saisie + "nom champ : " + nomChamp);
+
   try {
     //la saisie contient autre chose que des nombres
     if (isNaN(saisie) && saisie != "") {
@@ -58,7 +57,6 @@ function selectionNombre(nomChamp) {
 }
 
 function traiterNombres() {
-  console.log("appel fonction traiterNombres");
   let premierNombre = selectionNombre("minimum");
   let deuxiemeNombre = selectionNombre("maximum");
   try {
@@ -69,8 +67,7 @@ function traiterNombres() {
     } else if (deuxiemeNombre < 0) {
       throw "vous devez saisir un nombre maximum positif";
     } else {
-      console.log("premier nombre : " + premierNombre);
-      console.log("deuxième nombre : " + deuxiemeNombre);
+      return [premierNombre, deuxiemeNombre];
     }
   } catch (error) {
     let element = document.querySelector("#affichageErreur");
@@ -82,20 +79,15 @@ function traiterNombres() {
 function effacerMessageErreur() {
   let element = document.querySelector("#affichageErreur");
   element.innerHTML = "<span></span>";
-  console.log("appel fonction valider");
 }
 
 function valider() {
   effacerMessageErreur();
-  traiterNombres();
-
-  //vérifier le champ min
-  //vérifier le champ max
-  //récupérer les données
-  //n'afficher que les données correspondantes
+  let mesNombres = traiterNombres();
+  afficherDonneesMinMax(mesNombres[0], mesNombres[1]);
 }
 
-function construireTableauMinMax(texte) {
+function construireTableauMinMax(texte, min, max) {
   let contenuTableau = document.querySelector("#contenuTableau");
   let emplacementTitre = document.querySelector("#contenuTitre");
   let data = JSON.parse(texte);
@@ -108,14 +100,16 @@ function construireTableauMinMax(texte) {
   contenuAAjouter += `<tbody>`;
 
   for (let i = 0; i < data.pays.length; i++) {
-    contenuAAjouter += `<tr><td><img src="https://flagcdn.com/32x24/${data.pays[i].code}.png"></td>
+    if (data.pays[i].valeur >= min && data.pays[i].valeur <= max) {
+      contenuAAjouter += `<tr><td><img src="https://flagcdn.com/32x24/${data.pays[i].code}.png"></td>
     <td>${data.pays[i].nom}</td><td>${data.pays[i].valeur}</td><td>${data.pays[i].pourcentage}</td></tr>`;
+    }
   }
   contenuAAjouter += `</tbody></table>`;
   contenuTableau.innerHTML = contenuAAjouter;
 }
 
-function afficherDonneesMinMAx() {
+function afficherDonneesMinMax(min, max) {
   fetch("https://digicode.cleverapps.io/json/pays/pollution")
     .then(function (reponse) {
       if (reponse.status != 200) {
@@ -124,6 +118,6 @@ function afficherDonneesMinMAx() {
       return reponse.text();
     })
     .then(function (texte) {
-      construireTableauMinMax(texte);
+      construireTableauMinMax(texte, min, max);
     });
 }
